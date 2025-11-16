@@ -10,10 +10,10 @@ const port = process.env.port || 3009;
 /**
  * MIDDLEWARES
 */
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 app.use(cors());
-app.use(routes)
+app.use(routes); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /**
  * ROUTES

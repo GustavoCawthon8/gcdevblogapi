@@ -14,7 +14,7 @@ const Post = db.define("post", {
     },
 
     image: {
-        type: DataTypes.BLOB("long"),
+        type: DataTypes.BLOB,
         allowNull: false
     },
 });
