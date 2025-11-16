@@ -24,8 +24,15 @@ module.exports = class PostController{
 
     static async showPost(req, res){
         try{
-            const posts = await Post.findAll({raw: true});
-            res.json(posts);
+            const posts = await Post.findAll();
+
+            const formatted = posts.map(p => ({
+                id: p.id,
+                title: p.title,
+                description: p.description,
+                image: p.image ? Buffer.from(p.image).toString("base64") : null
+            }))
+            res.json(formatted);
             
         }catch(e){
             ErrorApp.handle(res, e)
