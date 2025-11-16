@@ -6,6 +6,10 @@ module.exports = class PostController{
     static async createPost(req, res){
         try{
             const {title, description} = req.body;
+
+            if(!req.file) return res.json({error: "Arquivo não enviado"});
+
+
             const image = req.file.buffer;
             
             const post = await Post.create({
